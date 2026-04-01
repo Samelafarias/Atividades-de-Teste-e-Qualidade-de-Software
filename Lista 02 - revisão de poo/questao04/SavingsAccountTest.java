@@ -5,24 +5,31 @@ public class SavingsAccountTest {
 
         SavingsAccount.modifyInterestRate(0.04);
 
-        System.out.println("Saldos apos 12 meses com taxa de 4%");
+        System.out.println("--- SIMULAÇÃO DE 12 MESES (TAXA 4%) ---");
+        System.out.printf("%-10s | %-15s | %-15s%n", "MÊS", "SAVER 1", "SAVER 2");
+        System.out.println("--------------------------------------------------");
 
-        for (int i = 1; i <= 12; i++) {
+        for (int mes = 1; mes <= 12; mes++) {
             saver1.calculateMonthlyInterest();
             saver2.calculateMonthlyInterest();
+            
+            System.out.printf("Mês %02d    | $%-14.2f | $%-14.2f%n", 
+                              mes, saver1.getBalance(), saver2.getBalance());
         }
-
-        System.out.printf("Saver 1: $%.2f%n", saver1.getBalance());
-        System.out.printf("Saver 2: $%.2f%n%n", saver2.getBalance());
 
         SavingsAccount.modifyInterestRate(0.05);
 
-        saver1.calculateMonthlyInterest();
-        saver2.calculateMonthlyInterest();
+        System.out.println("--- SIMULAÇÃO DE 12 MESES (TAXA 5%) ---");
+        System.out.printf("%-10s | %-15s | %-15s%n", "MÊS", "SAVER 1", "SAVER 2");
+        System.out.println("--------------------------------------------------");
 
-        System.out.println("Saldos apos ajuste para 5% (mais 1 mês):");
-        System.out.printf("Saver 1: $%.2f%n", saver1.getBalance());
-        System.out.printf("Saver 2: $%.2f%n", saver2.getBalance());
-
+        for (int mes = 1; mes <= 12; mes++) {
+            saver1.calculateMonthlyInterest();
+            saver2.calculateMonthlyInterest();
+            
+            System.out.printf("Mês %02d    | $%-14.2f | $%-14.2f%n", 
+                              mes, saver1.getBalance(), saver2.getBalance());
+    
+        }
     }
 }
